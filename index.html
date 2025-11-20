@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Pokémon Favoritos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h1>Pokémon Favoritos</h1>
+
+  <div class="contenedor">
+    <div>
+      <!-- 1. Input para escribir el nombre -->
+      <input id="pokemon-input" type="text" placeholder="Escribe el nombre del Pokémon">
+
+      <!-- 2. Botón para buscar -->
+      <button id="search-btn" onclick="searchPokemon()">Buscar</button>
+
+      <!-- 4. Botón para guardar como favorito -->
+      <button id="save-btn">Guardar como favorito</button>
+    </div>
+
+    <!-- 3. Div para mostrar el resultado -->
+    <h2>Resultado</h2>
+    <div id="resultados">
+      
+    </div>
+
+    <!-- 5. Sección para listar favoritos -->
+    <h2>Favoritos</h2>
+    <div id="favoritos"></div>
+
+    <script src="./main.js"></script>
+</body>
+
+</html>
