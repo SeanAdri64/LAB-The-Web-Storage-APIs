@@ -57,3 +57,28 @@ function saveFavorite() {
     updateFavoritesList();
     alert("Pokémon agregado a favoritos");
 }
+
+function updateFavoritesList() {
+
+    let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+
+
+    const contenedor = document.getElementById("favoritos");
+    contenedor.innerHTML = "";
+
+ 
+    favoritos.forEach(pokemon => {
+        const card = document.createElement("div");
+        card.classList.add("favorito-card");
+        console.log(pokemon);
+        card.innerHTML = `
+            <img src="${pokemon.pokeImg}" width="80">
+            <h4>${pokemon.pokeName}</h4>
+        `;
+
+        contenedor.appendChild(card);
+    });
+}
+
+
+window.onload = updateFavoritesList;
