@@ -20,18 +20,13 @@ async function searchPokemon() {
         pokeImg : data.sprites.front_default
       };
       console.log(pokeName, pokeImg)
-      // Creamos un div con la info
-      const divResultado = document.createElement("div");
-      divResultado.innerHTML = `
-        <div class="resultado">
-          <p>${currentPokemon.pokeName}</p>
-          <img src="${currentPokemon.pokeImg}" alt="${currentPokemon.pokeName}">
-        </div>
-      `
       
       // Muestra su imagen (sprites.front_default) y nombre en el <div> de resultados.
-      const resultados = document.getElementById("resultados")
-      resultados.appendChild(divResultado);
+      const resultados = document.getElementById("resultado")
+      resultados.innerHTML =  `
+        <img src="${currentPokemon.pokeImg}" alt="${currentPokemon.pokeName}">
+        <p>${currentPokemon.pokeName}</p>
+      `
     })
     .catch(function (error) {
       // Si no existe: Muestra un alert "Pokémon no encontrado.”
