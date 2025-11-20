@@ -16,8 +16,8 @@ async function searchPokemon() {
       // Si el Pokémon existe:
       // Guarda los datos en una variable global (para usarla luego al guardar).
       currentPokemon = {
-        pokeName = data.name,
-        pokeImg = data.sprites.front_default
+        pokeName : data.name,
+        pokeImg : data.sprites.front_default
       };
       console.log(pokeName, pokeImg)
       // Creamos un div con la info
