@@ -15,10 +15,11 @@ async function searchPokemon() {
     .then(function (data) {
       // Si el Pokémon existe:
       // Guarda los datos en una variable global (para usarla luego al guardar).
-      pokeName = data.name
-      pokeImg = data.sprites.front_default
-      console.log(pokeName, pokeImg)
-      
+      currentPokemon = {
+        pokeName = data.name
+        pokeImg = data.sprites.front_default
+        console.log(pokeName, pokeImg)
+      };
       // Creamos un div con la info
       const divResultado = document.createElement("div");
       divResultado.innerHTML = `
@@ -36,4 +37,22 @@ async function searchPokemon() {
       // Si no existe: Muestra un alert "Pokémon no encontrado.”
       alert("¡Error! Pokémon no encontrado");
     });
+}
+
+// Favoritos
+function saveFavorite() {
+    if (!currentPokemon) {
+        alert("Primero busca un Pokémon.");
+        return;
+    }
+    let favs = JSON.parse(localStorage.getItem("favoritos")) || [];
+    // Evitar repetidos
+    if (favs.some(p => p.name === currentPokemon.pokeName)) {
+        alert("Ese Pokémon ya está en tus favoritos.");
+        return;
+    }
+    favs.push(currentPokemon);
+    localStorage.setItem("favoritos", JSON.stringify(favs));
+    updateFavoritesList();
+    alert("Pokémon agregado a favoritos");
 }
