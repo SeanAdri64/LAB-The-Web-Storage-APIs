@@ -16,16 +16,16 @@ async function searchPokemon() {
       // Si el Pokémon existe:
       // Guarda los datos en una variable global (para usarla luego al guardar).
       currentPokemon = {
-        pokeName = data.name
+        pokeName = data.name,
         pokeImg = data.sprites.front_default
-        console.log(pokeName, pokeImg)
       };
+      console.log(pokeName, pokeImg)
       // Creamos un div con la info
       const divResultado = document.createElement("div");
       divResultado.innerHTML = `
         <div class="resultado">
-          <p>${pokeName}</p>
-          <img src="${pokeImg}" alt="${pokeName}">
+          <p>${currentPokemon.pokeName}</p>
+          <img src="${currentPokemon.pokeImg}" alt="${currentPokemon.pokeName}">
         </div>
       `
       
@@ -35,6 +35,7 @@ async function searchPokemon() {
     })
     .catch(function (error) {
       // Si no existe: Muestra un alert "Pokémon no encontrado.”
+      currentPokemon = null;
       alert("¡Error! Pokémon no encontrado");
     });
 }
