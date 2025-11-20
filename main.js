@@ -65,15 +65,24 @@ function updateFavoritesList() {
     favoritos.forEach(pokemon => {
         const card = document.createElement("div");
         card.classList.add("favorito-card");
-        console.log(pokemon);
         card.innerHTML = `
             <img src="${pokemon.pokeImg}" width="80">
-            <h4>${pokemon.pokeName}</h4>
+            <h4 style="margin-bottom: 0;">${pokemon.pokeName}</h4>
+            <button onclick="deleteFavorite(this)">Eliminar fav</button>
         `;
 
         contenedor.appendChild(card);
     });
 }
 
+function deleteFavorite(name) {
+  const pokemonSeleccionado = name.previousElementSibling.innerText;
+  console.log(pokemonSeleccionado)
 
-window.onload = updateFavoritesList;
+  let favs = JSON.parse(localStorage.getItem("favoritos")) || [];
+  favs = favs.filter(p => p.pokeName !== pokemonSeleccionado);
+  localStorage.setItem("favoritos", JSON.stringify(favs))
+  updateFavoritesList();
+}
+
+window.onload = updateFavoritesList()
