@@ -43,7 +43,7 @@ function saveFavorite() {
     }
     let favs = JSON.parse(localStorage.getItem("favoritos")) || [];
     // Evitar repetidos
-    if (favs.some(p => p.name === currentPokemon.pokeName)) {
+    if (favs.some(p => p.pokeName === currentPokemon.pokeName)) {
         alert("Ese Pokémon ya está en tus favoritos.");
         return;
     }
